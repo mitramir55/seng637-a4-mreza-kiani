@@ -38,6 +38,16 @@ public class IntersectMethodTest {
     }
 
     @Test
+    public void aCloserPartialIntersectionWhenNumbersAreOnTheRight() {
+        assertTrue("[0.9999, 1.001] has intersection with [-1, +1]", range.intersects(0.9999999, 1.000001));
+    }
+
+    @Test
+    public void aCloserPartialIntersectionWhenNumbersAreOnTheLeft() {
+        assertTrue("[-1.001, -0.9999] has intersection with [-1, +1]", range.intersects(-1.000001, -0.9999999));
+    }
+
+    @Test
     public void noIntersection() {
         assertFalse("[-2, -1.5] has no intersection with [-1, +1]", range.intersects(-2, -1.5));
     }
@@ -50,6 +60,11 @@ public class IntersectMethodTest {
     @Test
     public void aMarginalIntersection() {
         assertFalse("[-2, -1] has a marginal intersection with [-1, +1]", range.intersects(-2, -1));
+    }
+
+    @Test
+    public void aRightMarginalIntersection() {
+        assertFalse("[1, 2] has a marginal intersection with [-1, +1]", range.intersects(1, 2));
     }
 
     @Test

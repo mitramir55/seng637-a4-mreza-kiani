@@ -430,6 +430,9 @@ public strictfp class Range implements Serializable {
         if (!(this.lower == range.lower)) {
             return false;
         }
+        if (Double.isNaN(this.upper) && Double.isNaN(range.upper)) {
+            return true;
+        }
         if (!(this.upper == range.upper)) {
             return false;
         }

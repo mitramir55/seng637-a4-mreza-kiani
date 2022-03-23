@@ -108,7 +108,7 @@ public class CombineIgnoringNaNMethodTest {
         Range r2 = new Range(-1, Double.NaN);
         Range result = Range.combineIgnoringNaN(r1, r2);
         Range expected = new Range(-1, Double.NaN);
-//        assertEquals(expected, result);
+        assertEquals(expected, result);
     }
 
     @After
