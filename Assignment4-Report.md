@@ -34,6 +34,18 @@ Please [tell us](mailto:mohammadreza.kianifa@ucalgary.ca) if you had any problem
  
 # Report all the statistics and the mutation score for each test class
 
+This is how Range class score was initially (63%):
+![](media/report/range-initial-score.png)
+
+This is the Range class after improvement (74%):
+![](media/report/range-final-score.png)
+
+Also, this is how DataUtilities score was initially (90%):
+![](media/report/DataUtilties-initial-score.png)
+
+And finally, this is how DataUtilities score became after all **possible** improvements (91%):
+![](media/report/DataUtilities-final-score.png)
+
 # Analysis drawn on the effectiveness of each of the test classes
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
