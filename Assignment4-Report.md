@@ -98,6 +98,26 @@ and upper variables. And some mutations were related to applying operations on t
 that checks the constant value of a message, we could kill some mutations.
 
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
+Advantages:
+- It helps to find the complex bugs that are hidden during the normal testing.
+- Mutation testing has the ability to detect all faults in the source code.
+- With mutation testing, testers could find the quality of test suites that they write.
+- Sometimes both of the codes and test cases are correct but the problem is caused because of test data. Mutation testing helps to find out the issues in test data.
+- High coverage of the source program is attained.
+- You need to be careful about marginal values in your testcases.
+- You should be careful about every single line in your source code to cover all the possible change states.
+- Loopholes in test data can be identified.
+- The quality of software programs has been improved.
+- This method helps to find the hidden defects and maximum code coverage in order to identify the part of the code that is not completely tested by the primary test suites.
+
+Disadvantages:
+- Some mutations are infeasible to be killed, and it takes you plenty of time to identify them.
+- Not all the mutations are things that commonly happens to the source code during the changes. So the related tests are also useless.
+- This method is costly and time-consuming because many mutant programs would be produced and must be tested.
+- Complex mutations are difficult to implement.
+- It is not possible to do this testing without any automation tools.
+- As this method involves source code changes, it is not at all applicable for Black Box Testing.
+- Since each mutation has the same number of test cases as that of the original program, a large number of mutant programs may need to be tested against the original test suite.
 
 # Explain your SELENUIM test case design process
 
