@@ -45,7 +45,45 @@ Here are some examples of what couldn't be changed in the code:
 - Changing `Number n = data.getValue(r, column);` to `Number n = data.getValue(r, column)++;` makes no difference. Since the value is assigned to n before incrementing and the incremented part is not saved anywhere in the memory. So this is an equivalent mutant as well.
 - `public static double calculateColumnTotal(Values2D data, int column) {
   ParamChecks.nullNotPermitted(data, "data");` In this case, if we pass null to the function, we'll face compile, but the
+
 # A discussion of what could have been done to improve the mutation score of the test suites
+First, we analyse the generated report by the mutation tool. It shows you detailed report for each line. For instance, 
+by looking at the bellow picture, you can see that for _getUpperBound()_ method of the class _Range_ we had full mutation
+coverage, because it is highlighted in green.
+![](media/report/range-upper.png)
+
+If we click on the number on the right side of the line number, we can go to detailed info about the applied mutations, 
+which you can see in the picture bellow:
+![](media/report/range-upper-detail.png)
+
+For some methods that we don't have fully coverage, the line is highlighted in red color. In these cases, at least one 
+of the mutations has survived. We went through all the red lines and analysed the survived mutation. We designed new 
+test cases in a way to kill these survived mutations if it's possible. (Because killing all the mutations are not feasible.)
+
+For instance, we saw the bellow picture when we first ran the tool on our code:
+![](media/report/range-scale-factor.png)
+
+You can see that in line 410, the if condition is not fully killed on mutations. One of the mutation was replacing the 0
+with 1. And our correct test case, passed the factor = 2 to the function. So by replacing 0 wit one, none of our testcases
+failed. So we added a new test cases that passed factor = 0.5 to the function. After that the mutation was killed, and our
+mutation score was improved.
+Also, one of the mutations was replacing the zero with -1, so we added another test with factor -0.5 that except an 
+exception to be thrown. So we could kill this mutation too. Our old test for failing used the factor = -2.  
+
+Another example for improving the mutation score was adding marginal test cases.
+![](media/report/range-intersects.png)
+For instance for intersects function, one of the reasons of survived mutation for line 157, was replacing less or equal to 
+operator with less than. By adding test with marginal value, like Range(1, 2) and b0=1, b1=2, we could kill these mutations.
+We used this technique for plenty of other methods like expandToInclude and combineIgnoringNaN as well.
+
+Another example is for line removal, for instance in DataUtilities class, there is a null assertion at the beginning of 
+the tests, like calculateColumnTotal or calculateRowTotal. We added a new tests that passes the data as null, and expect 
+IllegalArgumentException. Now by removing the null-assertion line due to mutation, this test will fail.
+
+Our next example is improving the mutation score with constant values. For instance, when the Range constructor throws 
+an exception when the lower bound is greater than the upper bound. In the exception message, it adds the lower 
+and upper variables. And some mutations were related to applying operations on these variables. So by adding a new test 
+that checks the constant value of a message, we could kill some mutations.
 
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
 
