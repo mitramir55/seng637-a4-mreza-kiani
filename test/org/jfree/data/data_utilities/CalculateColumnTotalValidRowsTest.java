@@ -71,4 +71,9 @@ public class CalculateColumnTotalValidRowsTest {
         assertEquals("The calculated sum for null elements should be 0", 0, result, DELTA);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateColumnTotalWithNullData() {
+        DataUtilities.calculateColumnTotal(null, 0, new int[]{0,1});
+    }
+
 }

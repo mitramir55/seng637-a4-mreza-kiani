@@ -16,6 +16,13 @@ public class CloneTest {
     }
 
     @Test
+    public void testCloneWithSimpleArgumentWithNull() {
+        double[][] array = new double[][]{{1, 2, Double.NaN, 4}, null};
+        double[][] result = DataUtilities.clone(array);
+        assertArrayEquals(array, result);
+    }
+
+    @Test
     public void testCloneWithEmptyArgument() {
         double[][] array = new double[][]{{}, {}};
         double[][] result = DataUtilities.clone(array);

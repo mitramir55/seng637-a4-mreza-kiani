@@ -68,4 +68,10 @@ public class CalculateRowTotalValidColumnsTest {
         double result = DataUtilities.calculateRowTotal(values, 0, new int[]{0});
         assertEquals("The calculated sum should be 0", 0, result, DELTA);
     }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateRowTotalWithNullData() {
+        DataUtilities.calculateRowTotal(null, 0, new int[]{0,1});
+    }
 }
