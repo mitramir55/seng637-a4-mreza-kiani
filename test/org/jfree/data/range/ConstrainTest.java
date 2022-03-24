@@ -9,10 +9,6 @@ public class ConstrainTest {
     private Range range;
     private final double DELTA = 0.0001;
 
-    @BeforeClass
-    public static void setUpBeforeClass() {
-    }
-
     @Before
     public void setUp() throws Exception {
         range = new Range(-1, 1);
@@ -37,4 +33,25 @@ public class ConstrainTest {
     public void nanValue() {
         assertEquals(range.constrain(Double.NaN), Double.NaN, DELTA);
     }
+
+    @Test
+    public void testContainsMethod() {
+        assertTrue(range.contains(0.5));
+    }
+
+    @Test
+    public void testContainsMethodWithNonContainsValue() {
+        assertFalse(range.contains(4));
+    }
+
+    @Test
+    public void testContainsMethodWithMarginalValue() {
+        assertTrue(range.contains(1));
+    }
+
+    @Test
+    public void testContainsMethodWithLowerMarginalValue() {
+        assertTrue(range.contains(-1));
+    }
+
 }

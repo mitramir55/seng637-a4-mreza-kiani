@@ -14,9 +14,24 @@ public class ConstructorTest {
         assertEquals(r1.getLength(), 0.5, 0.05);
     }
 
+    @Test
+    public void aCorrectConstructorWithDifferentNumbers() {
+        Range r1 = new Range(1, 3);
+        assertEquals(r1.getLength(), 2, 0.05);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void anIllegalConstructor() {
         new Range(1, -1);
+    }
+
+    @Test
+    public void anIllegalConstructorWithExceptionMessage() {
+        try {
+            new Range(1, -2);
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Range(double, double): require lower (1.0) <= upper (-2.0).");
+        }
     }
 
     @Test
