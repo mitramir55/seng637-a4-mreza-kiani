@@ -37,7 +37,14 @@ Please [tell us](mailto:mohammadreza.kianifa@ucalgary.ca) if you had any problem
 # Analysis drawn on the effectiveness of each of the test classes
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
+There are some types of mutations that do not change the behaviour of the code. Therefore, when you apply the mutation, the code is changed but the functionality is exactly the same. These types of mutants are called equivalent mutants.
 
+The problem is that these types of mutations are counted when we want to calculate the mutant coverage and can reduce the percentage of mutants covered. In the case of this project, we have achieved 90% mutant coverage for the Data Utilities class, but we couldn't increase it since all the remaining are equivalent mutants. 
+Here are some examples of what couldn't be changed in the code: 
+- `for (int v = 0; v < validRows.length; v++)` changing less than condition to not equal makes no difference in the execution of the loop and is equivalent mutant.
+- Changing `Number n = data.getValue(r, column);` to `Number n = data.getValue(r, column)++;` makes no difference. Since the value is assigned to n before incrementing and the incremented part is not saved anywhere in the memory. So this is an equivalent mutant as well.
+- `public static double calculateColumnTotal(Values2D data, int column) {
+  ParamChecks.nullNotPermitted(data, "data");` In this case, if we pass null to the function, we'll face compile, but the
 # A discussion of what could have been done to improve the mutation score of the test suites
 
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
