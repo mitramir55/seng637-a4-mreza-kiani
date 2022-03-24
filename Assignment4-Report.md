@@ -126,6 +126,17 @@ Disadvantages:
 # how did you test each functionaity with different test data
 
 # Discuss advantages and disadvantages of Selenium vs. Sikulix
+- Sikuli Tool is used to automate based on what can be seen on screen (GUI), whereas Selenium is used to automate testing of Web Applications. 
+- Selenium Uses locators (like classname or id) from HTML code to automate testing of Web Page Applications, but sikuli uses image recognition techniques.
+- Sikuli uses images for comparison and performs various operations like click, doubleClick, rightClick, text. It compares images by percentage value comparison
+- Selenium Can not automate desktop applications, whereas sikuli can automate a Windows application.
+- Selenium Supports almost all modern browsers
+- Selenium is Used for Regression testing
+- Selenium allows you to create an automation framework using testNG for reporting
+- Sikuli might behave differently if the saved image, matches with more than one object on the screen.
+- Selenium has a complicated API, whereas sikuli has much simpler API.
+- Sikuli can be combined with Selenium to perform both browser-based and mouse clicks operations.
+- Selenium cannot automate flash objects like video player, audio player etc, whereas sikuli provides rich support to automate flash objects.
 
 # How the team work/effort was divided and managed
 
