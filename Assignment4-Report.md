@@ -55,7 +55,9 @@ in the next sections. Also, some new test cases were designed for not-tested met
 Because they used some constant value and plenty of mutations happened to them that we could not kill them with our
 existing tests.
 
-[//]: # (TODO: add description related to DataUtilities)
+
+For DataUtilities class, the initial mutation coverage was 90% (619 out of 687). After reading mutation summary report of our tool, we've found out that in some cases, the removal of calling `ParamChecks.nullNotPermitted` mutations are not covered. Therefore, we wrote new tests and passed null as the argument to cover these mutations. Then the achieved mutation coverage was 91% (622 out of 687).  
+But as we will explain in the next part, the remaining mutants were equivalent mutants so it was impossible to remove them. 
 
 The tests are developed in separated files to increase the clean code and multitasking in the group. You can run the
 tests related to _Range_ class by running the _RangeJunitTestSuite_ class, and tests related to _DataUtilities_ class by
