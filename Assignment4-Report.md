@@ -57,8 +57,8 @@ existing tests.
 
 [//]: # (TODO: add description related to DataUtilities)
 
-The tests are developed in separated files to increase the clean code, and multi-tasking in group. You can run the tests
-related to _Range_ class by running the _RangeJunitTestSuite_ class, and tests related to _DataUtilities_ class by 
+The tests are developed in separated files to increase the clean code and multitasking in the group. You can run the
+tests related to _Range_ class by running the _RangeJunitTestSuite_ class, and tests related to _DataUtilities_ class by
 running the _DataUtilitiesJunitTestSuite_ class.
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
@@ -70,60 +70,61 @@ Here are some examples of what couldn't be changed in the code:
 - Changing `Number n = data.getValue(r, column);` to `Number n = data.getValue(r, column)++;` makes no difference. Since the value is assigned to n before incrementing and the incremented part is not saved anywhere in the memory. So this is an equivalent mutant as well.
 
 # A discussion of what could have been done to improve the mutation score of the test suites
-First, we analyse the generated report by the mutation tool. It shows you detailed report for each line. For instance, 
-by looking at the bellow picture, you can see that for _getUpperBound()_ method of the class _Range_ we had full mutation
-coverage, because it is highlighted in green.
+First, we analyze the generated report by the mutation tool. It shows you a detailed report for each line. For instance,
+by looking at the below picture, you can see that for _getUpperBound()_ method of the class _Range_ we had full mutation
+coverage because it is highlighted in green.
 ![](media/report/range-upper.png)
 
-If we click on the number on the right side of the line number, we can go to detailed info about the applied mutations, 
-which you can see in the picture bellow:
+If we click on the number on the right side of the line number, we can go to detailed info about the applied mutations,
+which you can see in the picture below:
 ![](media/report/range-upper-detail.png)
 
-For some methods that we don't have fully coverage, the line is highlighted in red color. In these cases, at least one 
-of the mutations has survived. We went through all the red lines and analysed the survived mutation. We designed new 
-test cases in a way to kill these survived mutations if it's possible. (Because killing all the mutations are not feasible.)
+For some methods that we don't have full coverage of, the line is highlighted in red color. In these cases, at least one
+of the mutations has survived. We went through all the red lines and analyzed the survived mutation. We designed new
+test cases in a way to kill these survived mutations if it's possible. (Because killing all the mutations is not
+feasible.)
 
 For instance, we saw the bellow picture when we first ran the tool on our code:
 ![](media/report/range-scale-factor.png)
 
-You can see that in line 410, the if condition is not fully killed on mutations. One of the mutation was replacing the 0
-with 1. And our correct test case, passed the factor = 2 to the function. So by replacing 0 wit one, none of our testcases
-failed. So we added a new test cases that passed factor = 0.5 to the function. After that the mutation was killed, and our
-mutation score was improved.
-Also, one of the mutations was replacing the zero with -1, so we added another test with factor -0.5 that except an 
-exception to be thrown. So we could kill this mutation too. Our old test for failing used the factor = -2.  
+You can see that in line 410, the if condition is not fully killed on mutations. One of the mutations was replacing the
+0 with 1. And our correct test case passed the factor = 2 to the function. So by replacing 0 with one, none of our test
+cases failed. So we added a new test case that passed factor = 0.5 to the function. After that, the mutation was killed,
+and our mutation score was improved. Also, one of the mutations was replacing the zero with -1, so we added another test
+with factor -0.5 that except an exception to be thrown. So we could kill this mutation too. Our old test for failing
+used the factor = -2.
 
-Another example for improving the mutation score was adding marginal test cases.
+Another example of improving the mutation score was adding marginal test cases.
 ![](media/report/range-intersects.png)
-For instance for intersects function, one of the reasons of survived mutation for line 157, was replacing less or equal to 
-operator with less than. By adding test with marginal value, like Range(1, 2) and b0=1, b1=2, we could kill these mutations.
-We used this technique for plenty of other methods like expandToInclude and combineIgnoringNaN as well.
+For instance for intersects function, one of the reasons for survived mutation for line 157, was replacing less or equal
+to the operator with less than. By adding tests with marginal values, like Range(1, 2) and b0=1, b1=2, we could kill
+these mutations. We used this technique for plenty of other methods like expandToInclude and combineIgnoringNaN as well.
 
-Another example is for line removal, for instance in DataUtilities class, there is a null assertion at the beginning of 
-the tests, like calculateColumnTotal or calculateRowTotal. We added a new tests that passes the data as null, and expect 
+Another example is for line removal, for instance in DataUtilities class, there is a null assertion at the beginning of
+the tests, like calculateColumnTotal or calculateRowTotal. We added a new test that passes the data as null, and expect
 IllegalArgumentException. Now by removing the null-assertion line due to mutation, this test will fail.
 
-Our next example is improving the mutation score with constant values. For instance, when the Range constructor throws 
-an exception when the lower bound is greater than the upper bound. In the exception message, it adds the lower 
-and upper variables. And some mutations were related to applying operations on these variables. So by adding a new test 
-that checks the constant value of a message, we could kill some mutations.
+Our next example is improving the mutation score with constant values. For instance, when the Range constructor throws
+an exception when the lower bound is greater than the upper bound. In the exception message, it adds the lower and upper
+variables. And some mutations were related to applying operations on these variables. So by adding a new test that
+checks the constant value of a message, we could kill some mutations.
 
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
 Advantages:
-- It helps to find the complex bugs that are hidden during the normal testing.
-- Mutation testing has the ability to detect all faults in the source code.
+- It helps to find the complex bugs that are hidden during normal testing.
+- Mutation testing can detect all faults in the source code.
 - With mutation testing, testers could find the quality of test suites that they write.
 - Sometimes both of the codes and test cases are correct but the problem is caused because of test data. Mutation testing helps to find out the issues in test data.
 - High coverage of the source program is attained.
-- You need to be careful about marginal values in your testcases.
+- You need to be careful about marginal values in your test cases.
 - You should be careful about every single line in your source code to cover all the possible change states.
 - Loopholes in test data can be identified.
 - The quality of software programs has been improved.
-- This method helps to find the hidden defects and maximum code coverage in order to identify the part of the code that is not completely tested by the primary test suites.
+- This method helps to find the hidden defects and maximum code coverage to identify the part of the code that is not completely tested by the primary test suites.
 
 Disadvantages:
 - Some mutations are infeasible to be killed, and it takes you plenty of time to identify them.
-- Not all the mutations are things that commonly happens to the source code during the changes. So the related tests are also useless.
+- Not all the mutations are things that commonly happen to the source code during the changes. So the related tests are also useless.
 - This method is costly and time-consuming because many mutant programs would be produced and must be tested.
 - Complex mutations are difficult to implement.
 - It is not possible to do this testing without any automation tools.
@@ -137,17 +138,17 @@ Disadvantages:
 # how did you test each functionaity with different test data
 
 # Discuss advantages and disadvantages of Selenium vs. Sikulix
-- Sikuli Tool is used to automate based on what can be seen on screen (GUI), whereas Selenium is used to automate testing of Web Applications. 
-- Selenium Uses locators (like classname or id) from HTML code to automate testing of Web Page Applications, but sikuli uses image recognition techniques.
-- Sikuli uses images for comparison and performs various operations like click, doubleClick, rightClick, text. It compares images by percentage value comparison
-- Selenium Can not automate desktop applications, whereas sikuli can automate a Windows application.
-- Selenium Supports almost all modern browsers
+- Sikuli Tool is used for automating based on what can be seen on-screen (GUI), whereas Selenium is used to automate testing of Web Applications.
+- Selenium Uses locators (like classname or id) from HTML code to automate testing of Web Page Applications, but Sikuli uses image recognition techniques.
+- Sikuli uses images for comparison and performs various operations like click, doubleClick, rightClick, text. It compares images by the percentage value comparison
+- Selenium Can not automate desktop applications, whereas Sikuli can automate a Windows application.
+- Selenium supports almost all modern browsers
 - Selenium is Used for Regression testing
-- Selenium allows you to create an automation framework using testNG for reporting
+- Selenium allows you to create an automation framework using TestNG for reporting
 - Sikuli might behave differently if the saved image, matches with more than one object on the screen.
-- Selenium has a complicated API, whereas sikuli has much simpler API.
+- Selenium has a complicated API, whereas Sikuli has a much simpler API.
 - Sikuli can be combined with Selenium to perform both browser-based and mouse clicks operations.
-- Selenium cannot automate flash objects like video player, audio player etc, whereas sikuli provides rich support to automate flash objects.
+- Selenium cannot automate flash objects like video players, audio players, etc, whereas Sikuli provides rich support to automate flash objects.
 
 # How the team work/effort was divided and managed
 
