@@ -68,8 +68,6 @@ The problem is that these types of mutations are counted when we want to calcula
 Here are some examples of what couldn't be changed in the code: 
 - `for (int v = 0; v < validRows.length; v++)` changing less than condition to not equal makes no difference in the execution of the loop and is equivalent mutant.
 - Changing `Number n = data.getValue(r, column);` to `Number n = data.getValue(r, column)++;` makes no difference. Since the value is assigned to n before incrementing and the incremented part is not saved anywhere in the memory. So this is an equivalent mutant as well.
-- `public static double calculateColumnTotal(Values2D data, int column) {
-  ParamChecks.nullNotPermitted(data, "data");` In this case, if we pass null to the function, we'll face compile, but the
 
 # A discussion of what could have been done to improve the mutation score of the test suites
 First, we analyse the generated report by the mutation tool. It shows you detailed report for each line. For instance, 
