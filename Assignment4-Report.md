@@ -158,6 +158,14 @@ Disadvantages:
 
 # How the team work/effort was divided and managed
 
+Shahryar and Mohammad Reza have mainly focused on setting up and working with Pitest tool and Ammaar has focused on setting up and performing tests using Selenium. Each of use were responsible for writing our report part as well and at each step, we were reviewing each other's work before finalizing it and helped each other if needed.
+
 # Difficulties encountered, challenges overcome, and lessons learned
 
+There were some difficulties for setting up Pitest on Eclipse 2022 on Windows, so we decided to use Ubuntu, and we could successfully set it up there. 
+Again, due to the pandemic we could hardly find a time to be in the university in-person so we managed all our meetings using Discord to talk about dividing the work, and reviewing each other's work. We've used Zoom to record our demo as well. 
+
+
 # Comments/feedback on the lab itself
+The description were detailed and was not vague. We've learned working with two new tools that are very useful for testing in the industry as well, and we gained deeper knowledge about white-box testing.
+
