@@ -16,7 +16,7 @@ For the second phase, we use Selenium as a tool to test the graphical user inter
 
 # Link of demo video
 
-[Video Link](https://discordapp.com/channels/938338697881980958/938338697881980961/957043795269132338)
+[Video Link](https://uofc-my.sharepoint.com/:v:/g/personal/shahryar_soltanpour_ucalgary_ca/EbYPXSOf9GNDu0uyprzwinIBvuiAvTxphRfuVMcoK5MH0w?e=e57The)
 
 It works for everyone with logged-in university account on outlook.
 Please [tell us](mailto:mohammadreza.kianifa@ucalgary.ca) if you had any problem.\
