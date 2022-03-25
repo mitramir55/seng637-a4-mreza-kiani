@@ -9,6 +9,10 @@
 | Muhammad Raihan        |     |
 
 # Introduction
+In the first phase of the assigment, we aim to measure mutant coverage and write test cases for our classes to increase the percentage. In mutation testing, the code is tested against being modified. Each mutated version is called a mutant and foreach mutant, we expect at least one of our test cases to be failed. If so, we can say that the mutation is killed, otherwise the mutation is survived against our tests. We perform the analysis on JFreeChart source code that we used for the previous assignments. We also used the test suites we'd written for the previous assignments.  We used Pitest tool (an Eclipse plugin) to run mutation tests. It gives us a detailed report about which mutations are killed or survived and then we can write tests to kill the remaining ones. Therefore, using this tool we have analyzed 10 mutations reported by Pitest, some of them are killed and others are survived. We've also found out that there are some equivalent mutations, meaning that they do not change the behaviour of the code, so they cannot be fixed. Finally, we've designed new test cases to increase Range class mutation coverage by 10 percent and DataUtilities class by 1 percent (since all the remaining mutations were equivalent.)
+
+For the second phase, we use Selenium as a tool to test the graphical user interface (GUI). This tool records scripts that we do on applications and is able to reproduce them with different data and assert that they're working as expected or not. We selected Staples website to perform Selenium tests on 6 different functionalities. Besides, we've compared Selenium and Sikulix tools, and we mentioned some of their differences in this report.
+
 
 # Link of demo video
 
