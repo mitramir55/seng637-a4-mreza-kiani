@@ -48,6 +48,19 @@ And finally, this is how DataUtilities score became after all **possible** impro
 
 # Analysis drawn on the effectiveness of each of the test classes
 
+For the Range class, first, we had the mutation score of 63%, and finally, it was improved to 73%. We added new test
+cases for some of the exiting class, like _combineIgnoringNaN(), constrain(), scale(), intersect(), expandToInclude()_,
+and _constructor()_. These cases were added in a way to kill the survived mutation that we will describe in more detail
+in the next sections. Also, some new test cases were designed for not-tested methods like _toString() or hashCode()_.
+Because they used some constant value and plenty of mutations happened to them that we could not kill them with our
+existing tests.
+
+[//]: # (TODO: add description related to DataUtilities)
+
+The tests are developed in separated files to increase the clean code, and multi-tasking in group. You can run the tests
+related to _Range_ class by running the _RangeJunitTestSuite_ class, and tests related to _DataUtilities_ class by 
+running the _DataUtilitiesJunitTestSuite_ class.
+
 # A discussion on the effect of equivalent mutants on mutation score accuracy
 There are some types of mutations that do not change the behaviour of the code. Therefore, when you apply the mutation, the code is changed but the functionality is exactly the same. These types of mutants are called equivalent mutants.
 
