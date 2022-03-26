@@ -139,9 +139,27 @@ Disadvantages:
 
 # Explain your SELENUIM test case design process
 
+For the test case design, we first noted down which features of Staples.com we wanted to test. We came up with the following list:
+- Login
+- Registration
+- Searching for Items
+- Adding to Cart
+- Removing from Cart
+- Checkout system
+
+Following this, we aimed to test these features for either regular use case or with wrong inputs such as invalid emails. For login,registration and and checkout we did not include the test cases with correct inputs due to privacy concerns. As the test case would include our email and password for it to be succesful.
+
 # Explain the use of assertions and checkpoints
 
+Verification was performed at the end of very test case to assert if the test case had passed succesfully or not. For example, with the wrong login test case it should show an alert saying email/password are invalid. We verify the existence of that alert. If it exists on the page then it means our wrong login test case passed.
+
+We also utilised verification checks for test cases related to the cart system and for checking out. Removing an item for cart or going onwards to checkout should not be possible if there are no items in cart. For this we used a "verify not text" in Selenium. It checked if items in cart were not 0 then proceeded with the test case if true. 
+
 # how did you test each functionaity with different test data
+
+For the test cases where the user needed to input their own data such as Email or Password, we tested those features with wrong inputs. This was due to the privacy concern associated with inputting our legitimate emails and passwords into the test case. As these tests would be put on github, we deemed it unsafe. Therefore tests associated with Login, Registration and Checkout features were only performed with erraneous data.
+
+In regards to the Cart feature, we tested it by adding and removing items from it. This also utilised the Search feature as an item needed to searched and located to be added to cart. For removing items from a cart, there needs to be something in the cart in the first place. This is why these 2 tests can not be performed in parallel and removal should be performed after adding to cart has been performed. 
 
 # Discuss advantages and disadvantages of Selenium vs. Sikulix
 - Sikuli Tool is used for automating based on what can be seen on-screen (GUI), whereas Selenium is used to automate testing of Web Applications.
